@@ -15,15 +15,19 @@
         .activity-reading { @apply bg-yellow-200; }
         .activity-cooking { @apply bg-orange-200; }
         #clock-container {
-            @apply flex flex-col md:flex-row justify-center items-center mb-6 gap-6;
+            @apply grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center mb-6 mt-4;
+        }
+        .clock-wrapper {
+            @apply flex flex-col items-center;
         }
         .clock {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border: 2px solid #333;
             border-radius: 50%;
             position: relative;
             background: white;
+            @apply sm:w-[200px] sm:h-[200px];
         }
         .hand {
             position: absolute;
@@ -34,43 +38,86 @@
         }
         .hour-hand {
             width: 4px;
-            height: 60px;
+            height: 45px;
             background: #333;
+            @apply sm:h-[60px];
         }
         .minute-hand {
             width: 3px;
-            height: 80px;
+            height: 60px;
             background: #666;
+            @apply sm:h-[80px];
         }
         .second-hand {
             width: 2px;
-            height: 90px;
+            height: 70px;
             background: red;
+            @apply sm:h-[90px];
         }
         .center {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background: #333;
             border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            @apply sm:w-[10px] sm:h-[10px];
         }
         .digital-clock {
-            @apply text-2xl font-mono mt-4;
+            @apply text-lg font-mono mt-2 sm:text-2xl sm:mt-4;
         }
         .widget-clock iframe {
-            @apply mx-auto;
+            width: 150px;
+            height: 150px;
+            @apply sm:w-[200px] sm:h-[200px];
         }
+        .clock-label {
+            @apply text-sm font-semibold mt-2 sm:text-base;
+        }
+        .number {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            @apply sm:text-base;
+        }
+        .number-1 { transform: rotate(30deg) translateY(-70px) rotate(-30deg); @apply sm:translateY-[-95px]; }
+        .number-2 { transform: rotate(60deg) translateY(-70px) rotate(-60deg); @apply sm:translateY-[-95px]; }
+        .number-3 { transform: rotate(90deg) translateY(-70px) rotate(-90deg); @apply sm:translateY-[-95px]; }
+        .number-4 { transform: rotate(120deg) translateY(-70px) rotate(-120deg); @apply sm:translateY-[-95px]; }
+        .number-5 { transform: rotate(150deg) translateY(-70px) rotate(-150deg); @apply sm:translateY-[-95px]; }
+        .number-6 { transform: rotate(180deg) translateY(-70px) rotate(-180deg); @apply sm:translateY-[-95px]; }
+        .number-7 { transform: rotate(210deg) translateY(-70px) rotate(-210deg); @apply sm:translateY-[-95px]; }
+        .number-8 { transform: rotate(240deg) translateY(-70px) rotate(-240deg); @apply sm:translateY-[-95px]; }
+        .number-9 { transform: rotate(270deg) translateY(-70px) rotate(-270deg); @apply sm:translateY-[-95px]; }
+        .number-10 { transform: rotate(300deg) translateY(-70px) rotate(-300deg); @apply sm:translateY-[-95px]; }
+        .number-11 { transform: rotate(330deg) translateY(-70px) rotate(-330deg); @apply sm:translateY-[-95px]; }
+        .number-12 { transform: rotate(0deg) translateY(-70px); @apply sm:translateY-[-95px]; }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
     <div class="container mx-auto p-4">
         <h1 class="text-3xl font-bold text-center mb-4">Mi Horario Semanal</h1>
         <div id="clock-container">
-            <div class="flex flex-col items-center">
+            <div class="clock-wrapper">
+                <span class="clock-label">Reloj Personalizado</span>
                 <div class="clock">
+                    <div class="number number-12">12</div>
+                    <div class="number number-1">1</div>
+                    <div class="number number-2">2</div>
+                    <div class="number number-3">3</div>
+                    <div class="number number-4">4</div>
+                    <div class="number number-5">5</div>
+                    <div class="number number-6">6</div>
+                    <div class="number number-7">7</div>
+                    <div class="number number-8">8</div>
+                    <div class="number number-9">9</div>
+                    <div class="number number-10">10</div>
+                    <div class="number number-11">11</div>
                     <div class="hand hour-hand"></div>
                     <div class="hand minute-hand"></div>
                     <div class="hand second-hand"></div>
@@ -78,8 +125,11 @@
                 </div>
                 <div class="digital-clock" id="digital-clock">00:00:00</div>
             </div>
-            <div class="widget-clock">
-                <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FLima" width="200" height="200" frameborder="0" seamless></iframe>
+            <div class="clock-wrapper">
+                <span class="clock-label">Reloj Externo</span>
+                <div class="widget-clock">
+                    <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FLima" width="150" height="150" frameborder="0" seamless class="sm:w-[200px] sm:h-[200px]"></iframe>
+                </div>
             </div>
         </div>
         <div class="overflow-x-auto">
