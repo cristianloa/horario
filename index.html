@@ -14,20 +14,23 @@
         .activity-study { @apply bg-green-200; }
         .activity-reading { @apply bg-yellow-200; }
         .activity-cooking { @apply bg-orange-200; }
+        .main-container {
+            @apply flex flex-col items-center min-h-screen;
+        }
         #clock-container {
-            @apply grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center mb-6 mt-4;
+            @apply grid grid-cols-2 gap-4 justify-items-center w-full mb-8 mt-4;
         }
         .clock-wrapper {
-            @apply flex flex-col items-center;
+            @apply flex flex-col items-center p-4 bg-white rounded-lg shadow-md;
         }
         .clock {
-            width: 150px;
-            height: 150px;
-            border: 2px solid #333;
+            width: 160px;
+            height: 160px;
+            border: 3px solid #333;
             border-radius: 50%;
             position: relative;
             background: white;
-            @apply sm:w-[200px] sm:h-[200px];
+            @apply sm:w-[220px] sm:h-[220px];
         }
         .hand {
             position: absolute;
@@ -35,24 +38,25 @@
             left: 50%;
             transform-origin: bottom;
             background: black;
+            @apply transition-transform duration-100 ease-linear;
         }
         .hour-hand {
             width: 4px;
             height: 45px;
             background: #333;
-            @apply sm:h-[60px];
+            @apply sm:h-[65px];
         }
         .minute-hand {
             width: 3px;
             height: 60px;
             background: #666;
-            @apply sm:h-[80px];
+            @apply sm:h-[85px];
         }
         .second-hand {
             width: 2px;
             height: 70px;
             background: red;
-            @apply sm:h-[90px];
+            @apply sm:h-[95px];
         }
         .center {
             width: 8px;
@@ -63,18 +67,22 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            @apply sm:w-[10px] sm:h-[10px];
+            @apply sm:w-[12px] sm:h-[12px];
         }
         .digital-clock {
-            @apply text-lg font-mono mt-2 sm:text-2xl sm:mt-4;
+            @apply text-base font-mono mt-3 sm:text-2xl sm:mt-4;
         }
         .widget-clock iframe {
-            width: 150px;
-            height: 150px;
-            @apply sm:w-[200px] sm:h-[200px];
+            width: 140px;
+            height: 140px;
+            @apply sm:w-[220px] sm:h-[220px];
         }
         .clock-label {
-            @apply text-sm font-semibold mt-2 sm:text-base;
+            @apply text-sm font-semibold mt-2 sm:text-lg;
+        }
+        #clock-container { 
+            display: flex;
+            justify-content: space-around;
         }
         .number {
             position: absolute;
@@ -83,25 +91,26 @@
             text-align: center;
             font-size: 12px;
             font-weight: bold;
-            @apply sm:text-base;
+            top: 68px;
+            @apply sm:text-lg;
         }
-        .number-1 { transform: rotate(30deg) translateY(-70px) rotate(-30deg); @apply sm:translateY-[-95px]; }
-        .number-2 { transform: rotate(60deg) translateY(-70px) rotate(-60deg); @apply sm:translateY-[-95px]; }
-        .number-3 { transform: rotate(90deg) translateY(-70px) rotate(-90deg); @apply sm:translateY-[-95px]; }
-        .number-4 { transform: rotate(120deg) translateY(-70px) rotate(-120deg); @apply sm:translateY-[-95px]; }
-        .number-5 { transform: rotate(150deg) translateY(-70px) rotate(-150deg); @apply sm:translateY-[-95px]; }
-        .number-6 { transform: rotate(180deg) translateY(-70px) rotate(-180deg); @apply sm:translateY-[-95px]; }
-        .number-7 { transform: rotate(210deg) translateY(-70px) rotate(-210deg); @apply sm:translateY-[-95px]; }
-        .number-8 { transform: rotate(240deg) translateY(-70px) rotate(-240deg); @apply sm:translateY-[-95px]; }
-        .number-9 { transform: rotate(270deg) translateY(-70px) rotate(-270deg); @apply sm:translateY-[-95px]; }
-        .number-10 { transform: rotate(300deg) translateY(-70px) rotate(-300deg); @apply sm:translateY-[-95px]; }
-        .number-11 { transform: rotate(330deg) translateY(-70px) rotate(-330deg); @apply sm:translateY-[-95px]; }
-        .number-12 { transform: rotate(0deg) translateY(-70px); @apply sm:translateY-[-95px]; }
+        .number-12 { transform: rotate(0deg) translateY(-70px); @apply sm:translateY-[-105px]; }
+        .number-1 { transform: rotate(30deg) translateY(-70px) rotate(-30deg); @apply sm:translateY-[-105px]; }
+        .number-2 { transform: rotate(60deg) translateY(-70px) rotate(-60deg); @apply sm:translateY-[-105px]; }
+        .number-3 { transform: rotate(90deg) translateY(-70px) rotate(-90deg); @apply sm:translateY-[-105px]; }
+        .number-4 { transform: rotate(120deg) translateY(-70px) rotate(-120deg); @apply sm:translateY-[-105px]; }
+        .number-5 { transform: rotate(150deg) translateY(-70px) rotate(-150deg); @apply sm:translateY-[-105px]; }
+        .number-6 { transform: rotate(180deg) translateY(-70px) rotate(-180deg); @apply sm:translateY-[-105px]; }
+        .number-7 { transform: rotate(210deg) translateY(-70px) rotate(-210deg); @apply sm:translateY-[-105px]; }
+        .number-8 { transform: rotate(240deg) translateY(-70px) rotate(-240deg); @apply sm:translateY-[-105px]; }
+        .number-9 { transform: rotate(270deg) translateY(-70px) rotate(-270deg); @apply sm:translateY-[-105px]; }
+        .number-10 { transform: rotate(300deg) translateY(-70px) rotate(-300deg); @apply sm:translateY-[-105px]; }
+        .number-11 { transform: rotate(330deg) translateY(-70px) rotate(-330deg); @apply sm:translateY-[-105px]; }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-center mb-4">Mi Horario Semanal</h1>
+    <div class="main-container max-w-screen-lg mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-6">Mi Horario Semanal</h1>
         <div id="clock-container">
             <div class="clock-wrapper">
                 <span class="clock-label">Reloj Personalizado</span>
@@ -128,357 +137,359 @@
             <div class="clock-wrapper">
                 <span class="clock-label">Reloj Externo</span>
                 <div class="widget-clock">
-                    <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FLima" width="150" height="150" frameborder="0" seamless class="sm:w-[200px] sm:h-[200px]"></iframe>
+                    <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FLima" width="140" height="140" frameborder="0" seamless class="sm:w-[220px] sm:h-[220px]"></iframe>
                 </div>
             </div>
         </div>
-        <div class="overflow-x-auto">
-            <table class="schedule-table w-full bg-white shadow-md rounded-lg">
-                <thead>
-                    <tr class="bg-gray-800 text-white">
-                        <th>Hora</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                        <th>Sábado</th>
-                        <th>Domingo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="font-semibold">06:00</td>
-                        <td class="activity-gym">Gym</td>
-                        <td></td>
-                        <td class="activity-gym">Gym</td>
-                        <td></td>
-                        <td class="activity-gym">Gym</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">06:30</td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td></td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td class="activity-gym">Gym</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">07:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td class="activity-reading">Lectura</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">07:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">08:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">08:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-study">Estudio</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">09:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-study">Estudio</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">09:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">10:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">10:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">11:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">11:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td class="activity-cooking">Cocinar</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">12:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">12:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">13:00</td>
-                        <td></td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">13:30</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-gym">Gym</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">14:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-gym">Gym</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">14:30</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">15:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td class="activity-study">Estudio</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">15:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td class="activity-study">Estudio</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">16:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">16:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">17:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">17:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">18:00</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td class="activity-cooking">Cocinar</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">18:30</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td class="activity-cooking">Cocinar</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">19:00</td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-cooking">Cocinar</td>
-                        <td></td>
-                        <td class="activity-reading">Lectura</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">19:30</td>
-                        <td class="activity-reading">Lectura</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-reading">Lectura</td>
-                        <td class="activity-reading">Lectura</td>
-                        <td class="activity-reading">Lectura</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">20:00</td>
-                        <td class="activity-reading">Lectura</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-work">Trabajo</td>
-                        <td class="activity-reading">Lectura</td>
-                        <td class="activity-reading">Lectura</td>
-                        <td class="activity-reading">Lectura</td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">20:30</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">21:00</td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-reading">Lectura</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">21:30</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">22:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="activity-reading">Lectura</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="flex justify-center w-full">
+            <div class="overflow-x-auto w-full">
+                <table class="schedule-table w-full bg-white shadow-md rounded-lg">
+                    <thead>
+                        <tr class="bg-gray-800 text-white">
+                            <th>Hora</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">06:00</td>
+                            <td class="activity-gym">Gym</td>
+                            <td></td>
+                            <td class="activity-gym">Gym</td>
+                            <td></td>
+                            <td class="activity-gym">Gym</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">06:30</td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td></td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td class="activity-gym">Gym</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">07:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td class="activity-reading">Lectura</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">07:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">08:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">08:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-study">Estudio</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">09:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-study">Estudio</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">09:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">10:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">10:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">11:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">11:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td class="activity-cooking">Cocinar</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">12:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">12:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">13:00</td>
+                            <td></td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">13:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-gym">Gym</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">14:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-gym">Gym</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">14:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">15:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td class="activity-study">Estudio</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">15:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td class="activity-study">Estudio</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">16:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">16:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">17:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">17:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">18:00</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td class="activity-cooking">Cocinar</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">18:30</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td class="activity-cooking">Cocinar</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">19:00</td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-cooking">Cocinar</td>
+                            <td></td>
+                            <td class="activity-reading">Lectura</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">19:30</td>
+                            <td class="activity-reading">Lectura</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-reading">Lectura</td>
+                            <td class="activity-reading">Lectura</td>
+                            <td class="activity-reading">Lectura</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">20:00</td>
+                            <td class="activity-reading">Lectura</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-work">Trabajo</td>
+                            <td class="activity-reading">Lectura</td>
+                            <td class="activity-reading">Lectura</td>
+                            <td class="activity-reading">Lectura</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">20:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">21:00</td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-reading">Lectura</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">21:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">22:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="activity-reading">Lectura</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script>
